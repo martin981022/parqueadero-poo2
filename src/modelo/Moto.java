@@ -8,6 +8,6 @@ public class Moto extends Vehiculo {
 
     @Override
     public double calcularPago(int horas) {
-        return horas * 1000;
+        return horas * 1500;
     }
 }

@@ -6,13 +6,14 @@ import servicio.ParqueaderoService;
 import java.util.Scanner;
 import main.VentanaParqueadero;
 
+
 public class Main {
 
     public static void main(String[] args) {
-        
-VentanaParqueadero ventana = new VentanaParqueadero();
-    ventana.setVisible(true);
-    
+
+        VentanaParqueadero ventana = new VentanaParqueadero();
+        ventana.setVisible(true);
+
         Scanner sc = new Scanner(System.in);
         ParqueaderoService parqueadero = new ParqueaderoService();
 
@@ -22,7 +23,8 @@ VentanaParqueadero ventana = new VentanaParqueadero();
             System.out.println("1. Ingresar carro");
             System.out.println("2. Ingresar moto");
             System.out.println("3. Ver vehículos");
-            System.out.println("4. Salir");
+            System.out.println("4. Salida de vehículo (calcular pago)");
+            System.out.println("5. Salir");
 
             int opcion = sc.nextInt();
             sc.nextLine();
@@ -54,6 +56,15 @@ VentanaParqueadero ventana = new VentanaParqueadero();
                     break;
 
                 case 4:
+
+                    System.out.println("Ingrese la placa del vehículo que sale:");
+                    String placaSalida = sc.nextLine();
+
+                    parqueadero.eliminarVehiculo(placaSalida);
+
+                    break;
+
+                case 5:
 
                     System.exit(0);
 

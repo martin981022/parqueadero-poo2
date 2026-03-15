@@ -110,10 +110,11 @@ public class VentanaParqueadero extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPlaca)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPlaca)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -171,17 +172,20 @@ public class VentanaParqueadero extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int fila = jTable2.getSelectedRow();
 
-        if (fila == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione un vehículo");
-            return;
-        }
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un vehículo");
+        return;
+    }
 
-        String placa = jTable2.getValueAt(fila, 0).toString();
+    String placa = jTable2.getValueAt(fila, 0).toString();
 
-        parqueadero.eliminarVehiculo(placa);
+    String ticket = parqueadero.eliminarVehiculo(placa);
 
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        modelo.removeRow(fila);
+    JOptionPane.showMessageDialog(this, ticket);
+
+    DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+    modelo.removeRow(fila);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
